@@ -97,11 +97,31 @@ function calculateTotals() {
   }
 
   totals = {};
-  totals["total"] = total.toString();
-  totals["vat"] = (total - total / 1.175).toString();
-  totals["totalnovat"] = (total / 1.175).toString();
+  totals["total"] = total.toFixed(2);
+  totals["vat"] = (total - total / 1.175).toFixed(2);
+  totals["totalnovat"] = (total / 1.175).toFixed(2);
+  //stores the numeric value of total for the function "orderFunction"
+  totals["total_num"] = total
 
   return totals;
+}
+
+/*New function - checks if the basket is empty (total == 0)
+Prompts warning message if trying to proceed to checkout with empty basket*/
+function orderFunction() {
+  var totals = calculateTotals(); 
+  if (totals["total_num"] == 0){
+    alert("Basket empty!");
+  }
+  else{
+    window.open('order.html');
+    self.close();
+  }
+  }
+  
+//New function - clears textbox after value is submitted
+function clearField(id){
+  document.getElementById(id).value = "";
 }
 
 function addToBasket(product, quantity) {
