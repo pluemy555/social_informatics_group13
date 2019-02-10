@@ -6,8 +6,19 @@
     <script type="text/javascript" src="model.js"></script>
   </head>
   <body>
+   <!-- Adding a scrollable div to avoid overlaps with totals--> 
+   <div style = "overflow-y: scroll;height:450px;"> 
     <form>
-      <table>
+      <table style="width:70%;" align="left;" cellpadding="7px;">
+        <tr>
+           <th></th>
+           <th>Product</th>
+           <th>Unit</th>
+           <th>Unit price</th>
+           <th>Quantity</th>
+           <th></th>
+           <th>Price</th>
+        <tr/>
         <script>
           var basket = readBasket();
           var productDetails = getProductDetails();
@@ -19,7 +30,9 @@
               document.write('         <td>' + productDetails[product]["units"] + '</td>\n');
               document.write('         <td>&pound;' + productDetails[product]["price"] + '</td>\n');
               document.write('         <td><input name="' + product + '" id="' + product + '" type="text" value="' + basket[product] + '" style="width: 30px;" /></td>\n');
-              document.write('         <td><input name="change' + product + '" type="button" value="change quantity" onclick="javascript:changeProductQuantity(\'' + product + '\', document.getElementById(\'' + product + '\').value)" /></td>\n');
+              document.write('         <td><input name="change' + product + '" type="button" value="change quantity" onclick="javascript:changeProductQuantity(\'' + product + '\', document.getElementById(\'' + product + '\').value); location.href=location.href;"/></td>\n');
+              document.write('         <td>&pound;' + (productDetails[product]["price"] * basket[product]).toFixed(2) + '</td>\n');
+              document.write('         <td><input name="remove' + product + '" type="button" value="remove product" onclick="javascript:removeProductFromBasket(\'' + product + '\');location.href=location.href;"/></td>\n');
               document.write('       </tr>\n');
             }
           }
@@ -30,12 +43,14 @@
     <div style="position: fixed; bottom: 0; left: 0; right: 0; height: 100px;">
       <script>
         var totals = calculateTotals();
-        document.write('<p>Total ex VAT: ' + totals["totalnovat"] + ' includes VAT: ' + totals["vat"] + ' Total inc. VAT: ' + totals["total"] + '</p>\n');
+        document.write('<p>Total ex VAT: ' + '&pound' + totals["totalnovat"] +'</p>\n');
+        document.write('<p>includes VAT: ' + '&pound' + totals["vat"] + '</p>\n');
+        document.write('<p>Total inc. VAT: ' + '&pound' + totals["total"] + '</p>\n');
       </script>
       <form>
         <input type="button" name="continue" value="Continue Shopping" onclick="self.close();" />
         <input type="button" name="clearbasket" value="Clear Basket" onclick="javascript:createEmptyBasket();self.close();" />
-        <input type="button" name="order" value="Order" onclick="window.open('order.html');self.close();" />
+        <input type="button" name="order" value="Order" onclick="javascript:orderFunction();" />
       </form>
     </div>
   </body>
