@@ -124,6 +124,11 @@ function clearField(id){
   document.getElementById(id).value = "";
 }
 
+//Function - prompt confirmation when adding item to basket
+function basketConfirm() {
+  confirm("Item added to basket");
+}
+
 function addToBasket(product, quantity) {
   if (document.cookie.indexOf(product) == -1) {
     createEmptyBasket();
