@@ -48,8 +48,8 @@
         document.write('<p>Total inc. VAT: ' + '&pound' + totals["total"] + '</p>\n');
       </script>
       <form>
-        <input type="button" name="continue" value="Continue Shopping" onclick="self.close();" />
-        <input type="button" name="clearbasket" value="Clear Basket" onclick="javascript:createEmptyBasket();self.close();" />
+        <input type="button" name="continue" value="Continue Shopping" onclick="window.location.href='shop.html'" />
+        <input type="button" name="clearbasket" value="Clear Basket" onclick="javascript:createEmptyBasket();window.location.href='shop.html'" />
         <input type="button" name="order" value="Order" onclick="javascript:orderFunction();" />
       </form>
     </div>
