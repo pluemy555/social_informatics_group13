@@ -100,6 +100,9 @@ function calculateTotals() {
   totals["total"] = total.toString();
   totals["vat"] = (total - total / 1.175).toString();
   totals["totalnovat"] = (total / 1.175).toString();
+  //stores the numeric value of total for the function "orderFunction"
+  totals["total_num"] = total
+
 
   return totals;
 }
@@ -212,4 +215,43 @@ function getCookieVariableValue(variable) {
   var value = "; " + document.cookie;
   var parts = value.split("; " + variable + "=");
   if (parts.length == 2) return parts.pop().split(";").shift()
+}
+
+
+/*check if the basket is empty (total == 0)
+Prompt warning message if trying to proceed to checkout with empty basket*/
+function orderFunction() {
+  var totals = calculateTotals(); 
+  if (totals["total_num"] == 0){
+    alert("Basket empty!");
+  }
+  else{
+    window.open('order.html');
+    self.close();
+  }
+  }
+
+//clear textbox after value is submitted
+function clearField(id){
+  document.getElementById(id).value = "";
+}
+
+//Prompt confirmation message
+function basketConfirm() {
+  confirm('Item added to basket');
+}
+
+
+//check whether the value entered is between 0 and 20 and numeric
+//prompt error messages otherwise
+function verifyNumeric(product,newquantity){
+  if (isNaN(newquantity)) {
+    alert("Please enter numeric values only!");
+  } else if (newquantity<0){
+    alert("Please enter positive values only!");
+  } else if (newquantity>50){
+    alert("Cannot order more than 20 units!");
+  }else{
+    changeProductQuantity(product,newquantity);
+  }
 }
