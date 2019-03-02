@@ -226,8 +226,9 @@ function orderFunction() {
     alert("Basket empty!");
   }
   else{
-    window.open('order.html');
-    self.close();
+    //window.open('order.html');
+    //self.close();
+    location.href = "./shop.html";
   }
   }
 
