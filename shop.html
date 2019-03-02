@@ -4,7 +4,7 @@
     <title></title>
     <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
     <script type="text/javascript" src="model.js"></script>
-
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <!-- <style>
     /* Style The Dropdown Button */
     .dropbtn {
@@ -53,20 +53,26 @@
       background-color: #FFFFFF;
     }
     </style> -->
-
+	<style>
+		td {
+			padding-left: 15px;
+			padding-right: 15px;
+		}
+	</style>
 
 
 
   </head>
   <body>
+	<h3 style="margin: 20px; margin-left: 20%">eVeg Shop</h3>
     <form>
-      <table style= "margin:1em auto;">
+      <table style= "margin:auto; margin-bottom: 50px;">
         <script>
           var productDetails = getProductDetails();
           for (var product in productDetails) {
             document.write('<tr>\n');
             // image formating
-            document.write('<td><img src="img/' + productDetails[product]["image"] + '" width="100" /></td>\n');
+            document.write('<td><img src="img/' + productDetails[product]["image"] + '" width="100px" /></td>\n');
             //  product name formating
             document.write('<td>' + productDetails[product]["name"].bold() + "<br>" + productDetails[product]["description"] + '</td>');
             // description formating
@@ -81,18 +87,18 @@
             // input value
             // document.write('<td><input name="' + product + '" id="' + product + '" type="text" value="" style="width: 30px;" /></td>\n');
 
-            document.write('<td><select name="'+ product +'" id="' + product + '" value=""><option value=1>1</option><option value=2>2</option> <option value=3>3</option> <option value=4>4</option> <option value=5>5</option> <option value=6>6</option> <option value=7>7</option> <option value=8>8</option> <option value=9>9</option><option value=10>10</option></select></td>')
+            document.write('<td><select name="'+ product +'" class="form-control" id="' + product + '" value=""><option value=1>1</option><option value=2>2</option> <option value=3>3</option> <option value=4>4</option> <option value=5>5</option> <option value=6>6</option> <option value=7>7</option> <option value=8>8</option> <option value=9>9</option><option value=10>10</option></select></td>')
 
-            document.write('<td><input name="add' + product + '" type="button" value="add to basket" onclick="javascript:addToBasket(\'' + product + '\', document.getElementById(\'' + product + '\').value)" /></td>\n');
+            document.write('<td><input name="add' + product + '" type="button" class="btn btn-secondary" value="add to basket" onclick="javascript:addToBasket(\'' + product + '\', document.getElementById(\'' + product + '\').value)" /></td>\n');
             document.write('       </tr>\n');
           }
         </script>
       </table>
     </form>
 
-    <div style="position: fixed; bottom: 0; left: 0; right: 0; height: 50px;">
+    <div style="position: fixed; bottom: 10px; left: 15px; right: 0">
       <form>
-        <input type="button" name="viewbasket" value="View Basket" onclick="location.href='basket.html'" />
+        <input type="button" name="viewbasket" class="btn btn-primary" value="View Basket" onclick="location.href='basket.html'" />
 
 
 
