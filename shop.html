@@ -5,7 +5,13 @@
     <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
     <script type="text/javascript" src="model.js"></script>
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <!-- <style>
+    <script
+      src="https://code.jquery.com/jquery-3.3.1.min.js"
+      integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+      crossorigin="anonymous">
+    </script>
+	
+	<!-- <style>
     /* Style The Dropdown Button */
     .dropbtn {
       background-color: #FFFFFF;
@@ -66,7 +72,7 @@
   <body>
 	<h3 style="margin: 20px; margin-left: 20%">eVeg Shop</h3>
     <form>
-      <table style= "margin:auto; margin-bottom: 50px;">
+      <table id="table" style= "margin:auto; margin-bottom: 50px;">
         <script>
           var productDetails = getProductDetails();
           for (var product in productDetails) {
@@ -105,4 +111,11 @@
       </form>
     </div>
   </body>
+  
+  <script>
+	$("#table").on("click", 'input[type="button"]', function() {
+		$(this).removeClass("btn-secondary").addClass("btn-success");
+	});
+  </script>
+  
 </html>
