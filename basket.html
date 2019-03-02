@@ -1,9 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
-<html xmlns="http://www.w3.org/1999/xhtml" dir="ltr" lang="en-US">
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+<html xmlns="http://www.w3.org/1999/xhtml" dir="ltr" lang="en-US" style="height:100%">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
-<!--Theme -->
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap-theme.min.css" integrity="sha384-6pzBo3FDv/PJ8r2KRkGHifhEocL+1X2rVCTTkUfGk7/0pbek5mMa1upzvWbrUbOZ" crossorigin="anonymous">
+
 
  
  <head>
@@ -11,7 +10,7 @@
     <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
     <script type="text/javascript" src="model.js"></script>
   </head>
-  <body>
+  <body style="height:100%">
     <style>
     img{
     max-width:80px;
@@ -24,7 +23,8 @@
     font-weight:bold;
     }
     </style>
-   <div class="container">
+	<div class="container" style="height:100%">
+	<h3 style="margin: 15px">Basket</h3>
     <table align="left;" cellpadding="7px;" id="heading" class="table" style="width:100%;">
       <tr>
            <td></td>
@@ -37,7 +37,7 @@
            <td></td>
       <tr/>
     </table>
-  <div style = "overflow-y: scroll;height:400px;">
+  <div style = "overflow-y: scroll;height:60%">
     <form class="form-inline">
       <table align="left;" cellpadding="7px;" class="table">
         <script>
@@ -61,19 +61,20 @@
       </table>
     </form>
     </div>
-    </div>
-    <div style="position: fixed; bottom: 0; left: 2%; right: 0; height: 150px;">
+	
+    <div style="position: fixed; bottom: 20px; left: 20px; right: 0; line-height: 1em">
       <script>
         var totals = calculateTotals();
-        document.write('<p>Total ex VAT: ' + '&pound' + totals["totalnovat"] +'</p>\n');
-        document.write('<p>includes VAT: ' + '&pound' + totals["vat"] + '</p>\n');
+        document.write('<p>Total ex VAT: ' + '&pound' + parseFloat(totals["totalnovat"]).toFixed(2) +'</p>\n');
+        document.write('<p>includes VAT: ' + '&pound' + parseFloat(totals["totalnovat"]).toFixed(2) + '</p>\n');
         document.write('<p>Total inc. VAT: ' + '&pound' + totals["total"] + '</p>\n');
       </script>
       <form>
-        <input type="button" name="continue" value="Continue Shopping" onclick="window.location.href='shop.html'" />
-        <input type="button" name="clearbasket" value="Clear Basket" onclick="javascript:createEmptyBasket();window.location.href='shop.html';" />
-        <input type="button" name="order" value="Order" onclick="javascript:orderFunction();" />
+        <input type="button" name="continue" value="Continue Shopping" class="btn btn-secondary" onclick="window.location.href='shop.html'" />
+        <input type="button" name="clearbasket" value="Clear Basket" class="btn btn-light" onclick="javascript:createEmptyBasket();window.location.href='shop.html';" />
+        <input type="button" name="order" value="Order" class="btn btn-primary" onclick="javascript:orderFunction();" />
       </form>
     </div>
+	</div>
   </body>
 </html>
