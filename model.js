@@ -97,9 +97,9 @@ function calculateTotals() {
   }
 
   totals = {};
-  totals["total"] = total.toString();
-  totals["vat"] = (total - total / 1.175).toString();
-  totals["totalnovat"] = (total / 1.175).toString();
+  totals["total"] = total.toFixed(2);
+  totals["vat"] = (total - total / 1.175).toFixed(2);
+  totals["totalnovat"] = (total / 1.175).toFixed(2);
   //stores the numeric value of total for the function "orderFunction"
   totals["total_num"] = total
 
