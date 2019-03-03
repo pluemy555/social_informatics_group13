@@ -20,44 +20,47 @@
     max-width:80px;
     max-height:100px;
     }
-    td,th{
-    width:40px; 
+    td{
+    width:100px;
+    vertical-align:middle;
+    text-align:center;
     }
     #heading{
     font-weight:bold;
+    vertical-align:default;
     }
     </style>
 	<div class="container" style="height:100%">
-	<h3 style="margin: 15px">Basket</h3>
-    <table align="left;" cellpadding="7px;" id="heading" class="table" style="width:100%;">
-      <tr>
+	<h3 style="margin: 15px;height: 30px">Your Basket</h3>
+    <table align="left;" cellpadding="7px;" id="heading" class="table" style="width:800px;">
+     <tr>
            <td></td>
-           <td style="width:30px;">Product</td>
+           <td>Product</td>
            <td>Unit</td>
            <td>Unit price</td>
+           <td>Quantity</td>
            <td></td>
-           <td style="text-align:center;">Quantity</td>
            <td>Price</td>
            <td></td>
       <tr/>
     </table>
-  <div style = "overflow-y: scroll;height:60%">
+  <div style = "overflow-y: scroll;height:350px;">
     <form class="form-inline">
-      <table align="left;" cellpadding="7px;" class="table">
+      <table align="left;" cellpadding="7px;" class="table" style="width:800px;">
         <script>
           var basket = readBasket();
           var productDetails = getProductDetails();
           for (var product in productDetails) {
             if (basket[product] > 0) {            
               document.write('       <tr id = "tab_' + product + '">\n');
-              document.write('         <td><img src="img/' + productDetails[product]["image"] + '" /></td>\n');
-              document.write('         <td>' + productDetails[product]["name"] + '</td>\n');
-              document.write('         <td>' + productDetails[product]["units"] + '</td>\n');
-              document.write('         <td>&pound;' + productDetails[product]["price"] + '</td>\n');
-              document.write('         <td style="width:30px;"><input class="form-control" name="' + product + '" id="' + product + '" type="text" value="' + basket[product] + '" style="width: 50px;" /></td>\n');
-              document.write('         <td style="width:60px;"><input name="change' + product + '" type="button" class="btn btn-primary" value="change" onclick="javascript:verifyNumeric(\'' + product + '\', document.getElementById(\'' + product + '\').value); location.href=location.href;"/></td>\n');
+              document.write('         <td style="vertical-align:middle;"><img src="img/' + productDetails[product]["image"] + '" /></td>\n');
+              document.write('         <td style="vertical-align:middle;">' + productDetails[product]["name"] + '</td>\n');
+              document.write('         <td style="vertical-align:middle;">' + productDetails[product]["units"] + '</td>\n');
+              document.write('         <td style="vertical-align:middle;">&pound;' + productDetails[product]["price"] + '</td>\n');
+              <td style="vertical-align:middle;"><input class="form-control" name="' + product + '" id="' + product + '" type="text" maxlength="2" value="' + basket[product] + '" style="width: 50px;" /></td>\n');
+              document.write('         <td style="vertical-align:middle;"><input name="change' + product + '" type="button" class="btn btn-primary" value="change" onclick="javascript:verifyNumeric(\'' + product + '\', document.getElementById(\'' + product + '\').value); location.href=location.href;"/></td>\n');
               document.write('         <td>&pound;' + (productDetails[product]["price"] * basket[product]).toFixed(2) + '</td>\n');
-              document.write('         <td><input name="remove' + product + '" type="button" value="remove product" class="btn btn-danger" onclick="javascript:removeProductFromBasket(\'' + product + '\');location.href=location.href;"/></td>\n');
+              document.write('         <td><input name="remove' + product + '" type="button" value="remove product" class="btn btn-danger" onclick="javascript:removeProductFromBasket(\'' + product + '\');javascript:reload();"/></td>\n');
               document.write('       </tr>\n');
             }
           }
@@ -66,7 +69,7 @@
     </form>
     </div>
 	
-    <div style="position: fixed; bottom: 20px; left: 20px; right: 0; line-height: 1em">
+    <div style="position: fixed; bottom: 0; left: 0; right: 0; height: 150px; background-color:white; width:800px;" id="totals">
       <script>
         var totals = calculateTotals();
         document.write('<p>Total ex VAT: ' + '&pound' + parseFloat(totals["totalnovat"]).toFixed(2) +'</p>\n');
