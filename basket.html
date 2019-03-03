@@ -57,7 +57,7 @@
               document.write('         <td style="vertical-align:middle;">' + productDetails[product]["name"] + '</td>\n');
               document.write('         <td style="vertical-align:middle;">' + productDetails[product]["units"] + '</td>\n');
               document.write('         <td style="vertical-align:middle;">&pound;' + productDetails[product]["price"] + '</td>\n');
-              <td style="vertical-align:middle;"><input class="form-control" name="' + product + '" id="' + product + '" type="text" maxlength="2" value="' + basket[product] + '" style="width: 50px;" /></td>\n');
+              document.write('         <td style="vertical-align:middle;"><input class="form-control" name="' + product + '" id="' + product + '" type="text" maxlength="2" value="' + basket[product] + '" style="width: 50px;" /></td>\n');
               document.write('         <td style="vertical-align:middle;"><input name="change' + product + '" type="button" class="btn btn-primary" value="change" onclick="javascript:verifyNumeric(\'' + product + '\', document.getElementById(\'' + product + '\').value); location.href=location.href;"/></td>\n');
               document.write('         <td>&pound;' + (productDetails[product]["price"] * basket[product]).toFixed(2) + '</td>\n');
               document.write('         <td><input name="remove' + product + '" type="button" value="remove product" class="btn btn-danger" onclick="javascript:removeProductFromBasket(\'' + product + '\');javascript:reload();"/></td>\n');
