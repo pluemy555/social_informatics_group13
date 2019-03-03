@@ -237,11 +237,6 @@ function clearField(id){
   document.getElementById(id).value = "";
 }
 
-//Prompt confirmation message
-function basketConfirm() {
-  confirm('Item added to basket');
-}
-
 
 //check whether the value entered is between 0 and 20 and numeric
 //prompt error messages otherwise
@@ -255,4 +250,11 @@ function verifyNumeric(product,newquantity){
   }else{
     changeProductQuantity(product,newquantity);
   }
+}
+
+/*Reload the totals on click*/
+function reload(){
+    var container = document.getElementById("totals");
+    var content = container.innerHTML;
+    container.innerHTML= content; 
 }
