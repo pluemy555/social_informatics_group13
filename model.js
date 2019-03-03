@@ -228,7 +228,7 @@ function orderFunction() {
   else{
     //window.open('order.html');
     //self.close();
-    location.href = "./shop.html";
+    location.href = "./order.html";
   }
   }
 
