@@ -30,7 +30,6 @@
     vertical-align:default;
     }
     </style>
-	<div class="container" style="height:100%">
 	<h3 style="margin: 15px;height: 30px">Your Basket</h3>
     <table align="left;" cellpadding="7px;" id="heading" class="table" style="width:800px;">
      <tr>
@@ -59,8 +58,8 @@
               document.write('         <td style="vertical-align:middle;">&pound;' + productDetails[product]["price"] + '</td>\n');
               document.write('         <td style="vertical-align:middle;"><input class="form-control" name="' + product + '" id="' + product + '" type="text" maxlength="2" value="' + basket[product] + '" style="width: 50px;" /></td>\n');
               document.write('         <td style="vertical-align:middle;"><input name="change' + product + '" type="button" class="btn btn-primary" value="change" onclick="javascript:verifyNumeric(\'' + product + '\', document.getElementById(\'' + product + '\').value); location.href=location.href;"/></td>\n');
-              document.write('         <td style="vertical-align:middle>&pound;' + (productDetails[product]["price"] * basket[product]).toFixed(2) + '</td>\n');
-              document.write('         <td style="vertical-align:middle><input name="remove' + product + '" type="button" value="remove product" class="btn btn-danger" onclick="javascript:removeProductFromBasket(\'' + product + '\');javascript:reload();"/></td>\n');
+              document.write('         <td style="vertical-align:middle;">&pound;' + (productDetails[product]["price"] * basket[product]).toFixed(2) + '</td>\n');
+              document.write('         <td style="vertical-align:middle;"><input name="remove' + product + '" type="button" value="remove" class="btn btn-danger" onclick="javascript:removeProductFromBasket(\'' + product + '\');javascript:reload();"/></td>\n');
               document.write('       </tr>\n');
             }
           }
@@ -83,7 +82,6 @@
         <input type="button" name="order" value="Order" class="btn btn-primary" onclick="javascript:orderFunction();" />
       </form>
     </div>
-	</div>
 	<script>
 		$("#clearbasket").click(function() {
 			if (confirm('Are you sure you want to clear your basket?')) {
