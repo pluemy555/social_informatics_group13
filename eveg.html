@@ -16,8 +16,14 @@
      </h2>
 
      <form>
-       <input type="submit" name="continue" value="click here to continue..." style="color: red;" onclick="window.open('shop.html');self.close()" />
+       <input type="button" id="submit" name="continue" value="click here to continue..." style="color: red;"/>
      </form>
+     <script type="text/javascript">
+        document.getElementById("submit").onclick = function () {
+          console.log("clicked");
+          location.href = "./shop.html";
+        };
+      </script>
     </div>
   </body>
 </html>

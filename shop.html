@@ -5,35 +5,33 @@
     <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
     <script type="text/javascript" src="model.js"></script>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script
+      src="https://code.jquery.com/jquery-3.3.1.min.js"
+      integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+      crossorigin="anonymous">
+    </script>
+
+	<style>
+		td {
+			padding-left: 15px;
+			padding-right: 15px;
+		}
+	</style>
+
 
 
   </head>
   <body>
-    <style>
-    img{
-      max-width:100px;
-      max-height:100px;
-    }
-    tr.border_bottom td {
-      border-bottom:1pt solid grey;
-    }
-
-
-    </style>
-
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <a class="navbar-brand" href="#">eVeg</a>
-
-    </nav>
-
+	<h3 style="margin: 20px; margin-left: 20%">eVeg Shop</h3>
     <form>
-      <table style= "margin:1em auto;">
+      <table id="table" style= "margin:auto; margin-bottom: 50px;">
         <script>
           var productDetails = getProductDetails();
           for (var product in productDetails) {
             document.write('<tr class="border_bottom">\n');
             // image formating
-            document.write('<td><img src="img/' + productDetails[product]["image"] + '" width="100" /></td>\n');
+            document.write('<td><img src="img/' + productDetails[product]["image"] + '" width="100px" /></td>\n');
             //  product name formating
             document.write('<td>' + productDetails[product]["name"].bold() + "<br>" + productDetails[product]["description"] + '</td>');
             // description formating
@@ -46,25 +44,31 @@
             document.write('<td>' + productDetails[product]["units"] + '</td>\n');
 
             // input value
-            // document.write('<td><input name="' + product + '" id="' + product + '" type="text" value="" style="width: 30px;" /></td>\n');
 
-            document.write('<td><select name="'+ product +'" id="' + product + '" value=""> <option value=1>1</option><option value=2>2</option> <option value=3>3</option> <option value=4>4</option> <option value=5>5</option> <option value=6>6</option> <option value=7>7</option> <option valuts. They should not be used along with other classes on the same element. Instead, add a nestede=8>8</option> <option value=9>9</option><option value=10>10</option></select></td>')
+            document.write('<td><select name="'+ product +'" class="form-control" id="' + product + '" value=""><option value=1>1</option><option value=2>2</option> <option value=3>3</option> <option value=4>4</option> <option value=5>5</option> <option value=6>6</option> <option value=7>7</option> <option value=8>8</option> <option value=9>9</option><option value=10>10</option></select></td>')
 
-            document.write('<td><input name="add' + product + '" type="button" class="btn btn-primary" value="add to basket" onclick="javascript:addToBasket(\'' + product + '\', document.getElementById(\'' + product + '\').value)" /></td>\n');
+            document.write('<td><input name="add' + product + '" type="button" class="btn btn-secondary" value="add to basket" onclick="javascript:addToBasket(\'' + product + '\', document.getElementById(\'' + product + '\').value)" /></td>\n');
             document.write('       </tr>\n');
           }
         </script>
       </table>
     </form>
 
-    <div style="position: fixed; bottom: 0; left: 0; right: 0; height: 50px;">
+    <div style="position: fixed; bottom: 10px; left: 15px; right: 0">
       <form>
-        <button type="button" class="btn btn-default btn-lg" name="viewbasket" onclick="location.href='basket.html'">
-          <span class = "glyphicon glyphicon-shopping-cart" aria-hidden="true"><span/> Basket
-        </button>
+        <input type="button" name="viewbasket" class="btn btn-primary" value="View Basket" onclick="location.href='basket.html'" />
+
+
 
       </form>
     </div>
 
   </body>
+
+  <script>
+	$("#table").on("click", 'input[type="button"]', function() {
+		$(this).removeClass("btn-secondary").addClass("btn-success");
+	});
+  </script>
+
 </html>

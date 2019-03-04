@@ -226,19 +226,15 @@ function orderFunction() {
     alert("Basket empty!");
   }
   else{
-    window.open('order.html');
-    self.close();
+    //window.open('order.html');
+    //self.close();
+    location.href = "./order.html";
   }
   }
 
 //clear textbox after value is submitted
 function clearField(id){
   document.getElementById(id).value = "";
-}
-
-//Prompt confirmation message
-function basketConfirm() {
-  confirm('Item added to basket');
 }
 
 
@@ -254,4 +250,11 @@ function verifyNumeric(product,newquantity){
   }else{
     changeProductQuantity(product,newquantity);
   }
+}
+
+/*Reload the totals on click*/
+function reload(){
+    var container = document.getElementById("totals");
+    var content = container.innerHTML;
+    container.innerHTML= content; 
 }
