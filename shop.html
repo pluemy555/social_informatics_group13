@@ -3,7 +3,6 @@
   <head>
     <title></title>
     <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
     <script type="text/javascript" src="model.js"></script>
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <script
@@ -18,53 +17,85 @@
 			padding-right: 15px;
 		}
 	</style>
+
+
+
   </head>
   <body>
-      <nav class="navbar navbar-toggleable-md navbar-expand-lg navbar-light bg-primary">
-        <a class="navbar-brand navbar-toggler-left" style="position: relative; top: 5px; left: 0; right: 0" href="#" >
+    <nav class="navbar navbar-toggleable-md navbar-expand-lg navbar-light bg-primary">
+        <a class="navbar-brand navbar-toggler-left" style="margin-left:0; margin-right:auto" href="#" >
           <span class="mb-0 h1 text-white" style="">
           eVeg Shop
           </span>
         </a>
-        <a href="basket.html" class="btn btn-primary btn-lg" style="position: relative; top: 5px; left: ; right: 0">
+        <a href="basket.html" class="btn btn-primary btn-lg" style= "margin-left:auto; margin-right:0" >
           <span class="glyphicon glyphicon-shopping-cart" style="font-size: 20px"></span>
           <span class="mb-0 h4 text-white"> viewbasket</span>
         </a>
        </nav>
-    <form>
-      <table class "table" id="table" style= "margin:auto; margin-bottom: 50px;">
-        <script>
-          var productDetails = getProductDetails();
-          for (var product in productDetails) {
-            document.write('<tr class="border_bottom">\n');
-            // image formating
-            document.write('<td><img src="img/' + productDetails[product]["image"] + '" width="100px" /></td>\n');
-            //  product name formating
-            document.write('<td>' + productDetails[product]["name"].bold() + "<br>" + productDetails[product]["description"] + '</td>');
-            // description formating
-            // document.write('\n<td>' +  + '</td>');
-
-            document.write('<td>' + "&pound;" + productDetails[product]["price"] + '</td>');
-
-            document.write('<td>' + 'for' + '</td>');
-
-            document.write('<td>' + productDetails[product]["units"] + '</td>\n');
-
-            // input value
-
-            document.write('<td><select name="'+ product +'" class="form-control" id="' + product + '" value=""><option value=1>1</option><option value=2>2</option> <option value=3>3</option> <option value=4>4</option> <option value=5>5</option> <option value=6>6</option> <option value=7>7</option> <option value=8>8</option> <option value=9>9</option><option value=10>10</option></select></td>')
-
-            document.write('<td><input name="add' + product + '" type="button" class="btn btn-secondary" value="add to basket" onclick="javascript:addToBasket(\'' + product + '\', document.getElementById(\'' + product + '\').value)" /></td>\n');
-            document.write('       </tr>\n');
+	<!-- <h3 style="margin: 20px; margin-left: 20%">eVeg Shop</h3> -->
+  <div class="container">
+  <div class="row">
+    <div class="col-md-8">
+      <form style="display: inline-block">
+        <table id="table" style="display: inline-block">
+          <script>
+            var productDetails = getProductDetails();
+            for (var product in productDetails) {
+              document.write('<tr>\n');
+              // image formating
+              document.write('<td><img src="img/' + productDetails[product]["image"] + '" width="100px" /></td>\n');
+              //  product name formating
+              document.write('<td>' + productDetails[product]["name"].bold() + "<br>" + productDetails[product]["description"] + '</td>');
+              // description formating
+              // document.write('\n<td>' +  + '</td>');
+              document.write('<td>' + "&pound;" + productDetails[product]["price"] + '</td>');
+              document.write('<td>' + 'for' + '</td>');
+              document.write('<td>' + productDetails[product]["units"] + '</td>\n');
+              // input value
+              // document.write('<td><input name="' + product + '" id="' + product + '" type="text" value="" style="width: 30px;" /></td>\n');
+              document.write('<td><select name="'+ product +'" class="form-control" style="min-width:70px" id="' + product + '" value=""><option value=1>1</option><option value=2>2</option> <option value=3>3</option> <option value=4>4</option> <option value=5>5</option> <option value=6>6</option> <option value=7>7</option> <option value=8>8</option> <option value=9>9</option><option value=10>10</option></select></td>')
+              document.write('<td><input name="add' + product + '" type="button" class="btn btn-secondary" value="add to basket" onclick="javascript:addToBasket(\'' + product + '\', document.getElementById(\'' + product + '\').value); updateBasket()" /></td>\n');
+              document.write('       </tr>\n');
+            }
+          </script>
+        </table>
+      </form>
+      </div>
+      <div class="col-md-4">
+        <div style="display: inline-block; float:right">
+            <h5>Basket</h5>
+              <ul id="basketList">
+              </ul>
+            <script>
+            updateBasket();
+            function updateBasket() {
+            $("#basketList").empty();
+            var basket = readBasket();
+            var productDetails = getProductDetails();
+            for (var product in productDetails) {
+              if (basket[product] > 0) {
+                $("#basketList").append('<li id="' + product + '"><span style="margin:20px">' + productDetails[product]["name"] + '</span><span style="margin:20px">' + basket[product] + '</span><button onclick="javascript:removeProductFromBasket(\'' + product + '\'); updateBasket()" class="btn btn-danger" style="margin-left:10px; margin-bottom: 4px">Remove</button></li>');
+                /*document.write('         <td><img src="img/' + productDetails[product]["image"] + '" /></td>\n');
+                document.write('         <td>' + productDetails[product]["name"] + '</td>\n');
+                document.write('         <td>' + productDetails[product]["units"] + '</td>\n');
+                document.write('         <td>&pound;' + productDetails[product]["price"] + '</td>\n');
+                document.write('         <td style="width:30px;"><input class="form-control" name="' + product + '" id="' + product + '" type="text" value="' + basket[product] + '" style="width: 50px;" /></td>\n');
+                document.write('         <td style="width:60px;"><input name="change' + product + '" type="button" class="btn btn-primary" value="change" onclick="javascript:verifyNumeric(\'' + product + '\', document.getElementById(\'' + product + '\').value); location.href=location.href;"/></td>\n');
+                document.write('         <td>&pound;' + (productDetails[product]["price"] * basket[product]).toFixed(2) + '</td>\n');
+                document.write('         <td><input name="remove' + product + '" type="button" value="remove product" class="btn btn-danger" onclick="javascript:removeProductFromBasket(\'' + product + '\');location.href=location.href;"/></td>\n');
+                document.write('       </tr>\n');*/
+              }
+            }
           }
-        </script>
-      </table>
-    </form>
+            </script>
 
-    <!-- <div style="position: fixed; bottom: 10px; left: 15px; right: 0"> -->
 
+          </ul>
+        </div>
+        </div>
+      </div>
     </div>
-
   </body>
 
   <script>
