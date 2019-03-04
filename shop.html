@@ -18,14 +18,21 @@
 			padding-right: 15px;
 		}
 	</style>
-
-
-
   </head>
   <body>
-	<h3 style="margin: 20px; margin-left: 20%">eVeg Shop</h3>
+      <nav class="navbar navbar-toggleable-md navbar-expand-lg navbar-light bg-primary">
+        <a class="navbar-brand navbar-toggler-left" style="position: relative; top: 5px; left: 0; right: 0" href="#" >
+          <span class="mb-0 h1 text-white" style="">
+          eVeg Shop
+          </span>
+        </a>
+        <a href="basket.html" class="btn btn-primary btn-lg" style="position: relative; top: 5px; left: ; right: 0">
+          <span class="glyphicon glyphicon-shopping-cart" style="font-size: 20px"></span>
+          <span class="mb-0 h4 text-white"> viewbasket</span>
+        </a>
+       </nav>
     <form>
-      <table id="table" style= "margin:auto; margin-bottom: 50px;">
+      <table class "table" id="table" style= "margin:auto; margin-bottom: 50px;">
         <script>
           var productDetails = getProductDetails();
           for (var product in productDetails) {
@@ -54,13 +61,8 @@
       </table>
     </form>
 
-    <div style="position: fixed; bottom: 10px; left: 15px; right: 0">
-      <form>
-        <input type="button" name="viewbasket" class="btn btn-primary" value="View Basket" onclick="location.href='basket.html'" />
+    <!-- <div style="position: fixed; bottom: 10px; left: 15px; right: 0"> -->
 
-
-
-      </form>
     </div>
 
   </body>
