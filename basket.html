@@ -30,17 +30,19 @@
     vertical-align:default;
     }
     </style>
-  <nav class="navbar navbar-fixed-top navbar-expand-lg navbar-light bg-primary">
-    <a class="navbar-brand navbar-toggler-left" style="margin-left:0; margin-right:auto" href="shop.html" >
-      <span class="mb-0 h1 text-white">
-      eVeg Shop
-      </span>
-    </a>
-    <a href="basket.html" class="btn btn-primary btn-lg" style= "margin-left:auto; margin-right:0">
-      <img src="icon/si-glyph-basket.svg" style="margin-bottom: 5px; height:30px; width:30px"/>
-      <span class="mb-0 h4 text-white">Basket</span>
-    </a>
-  </nav>  
+      <nav class="navbar navbar-toggleable-md navbar-expand-md navbar-light bg-primary sticky-top">
+          <a class="navbar-brand navbar-toggler-left" style="margin-left:2%; margin-right:auto" href="shop.html" >
+              <span class="mb-0 h1 text-white">
+              eVeg Shop
+              </span>
+          </a>
+
+        <div class="float-right" style="margin-right:2%">
+            <a href="basket.html" class="btn btn-primary btn-md bg-warning " >
+                <span class="mb-0 h4 text-white text-justify"> Go to Basket</span>
+            </a>
+        </div>
+     </nav>
 	<h3 style="margin: 15px;height: 30px">Your Basket</h3>
     <table align="left;" cellpadding="7px;" id="heading" class="table" style="width:800px;">
      <tr>
@@ -55,8 +57,8 @@
       <tr/>
     </table>
   <div style = "overflow-y: scroll;height:350px;">
-    <form class="form-inline">
-      <table align="left;" cellpadding="7px;" class="table" style="width:800px;">
+    <form class="form-inline ">
+      <table cellpadding="7px;" class="table " style="width:800px;">
         <script>
           var basket = readBasket();
           var productDetails = getProductDetails();

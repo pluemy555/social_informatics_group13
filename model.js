@@ -258,3 +258,7 @@ function reload(){
     var content = container.innerHTML;
     container.innerHTML= content; 
 }
+
+function getFruits(){
+  return ["Bananas", "Coconut", "Apples", "Cherries"];
+}

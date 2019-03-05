@@ -23,36 +23,43 @@
   </head>
   <body>
     <nav class="navbar navbar-toggleable-md navbar-expand-md navbar-light bg-primary sticky-top">
+        <!-- <div class="col-md-9"> -->
             <a class="navbar-brand navbar-toggler-left" style="margin-left:2%; margin-right:auto" href="#" >
                 <span class="mb-0 h1 text-white">
                 eVeg Shop
                 </span>
             </a>
-
+        <!-- </div> -->
+        <!-- <div class="col-md-3"> -->
+          <!-- <div class="row justify-content-center align-self-center"> -->
           <div class="float-right" style="margin-right:2%">
               <a href="basket.html" class="btn btn-primary btn-md bg-warning " >
+                  <!-- <span class="glyphicon glyphicon-shopping-cart" style="font-size: 20px"></span> -->
                   <span class="mb-0 h4 text-white text-justify"> Go to Basket</span>
               </a>
           </div>
+        <!-- </div> -->
+
        </nav>
 
   <div class="container-fluid" style="margin:auto">
   <div class="row"> 
     <div class="col-md-9">
       <nav>
-        <ul class="pagination justify-content-center" style="margin-top: 2%; margin-bottom: 1px">
-            <li class="page-item active"><span class="page-link" href="#">All</span></li>
-            <li class="page-item"><a class="page-link" href="shop_fruit.html">Fruits</a></li>
-            <li class="page-item"><a class="page-link" href="shop_veg.html">Vegetable</a></li>
-        </ul>
+          <ul class="pagination justify-content-center" style="margin-top: 2%; margin-bottom: 1px">
+              <li class="page-item"><a class="page-link" href="shop.html">All</a></li>
+              <li class="page-item active"><span class="page-link" href="#">Fruits</span></li>
+              <li class="page-item"><a class="page-link" href="shop_veg.html">Vegetable</a></li>
+          </ul>
+  
       </nav>
         <div class="row justify-content-center " style="margin:0 auto;">
         <table class="table justify-content-center" cellpadding="7px;" style="margin: auto">
           <script>
-            // var fruit = getFruits();
+            var fruit = getFruits();
             var productDetails = getProductDetails();
             for (var product in productDetails) {
-              // if(fruit.indexOf(productDetails[product]["name"])<0){
+              if(fruit.indexOf(productDetails[product]["name"])>-1){
                 document.write('<tr>\n');
                 // image formating
                 document.write('<td><img src="img/' + productDetails[product]["image"] + '"width=100px height=100px" /></td>\n');
@@ -70,7 +77,7 @@
                 document.write('       </tr>\n');
                 // console.log(product);
               }
-            // }
+            }
           </script>
         </table>
       </div>
