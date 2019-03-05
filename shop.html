@@ -53,8 +53,8 @@
               <td></td>
               <td>Items</td>
               <!-- <td></td> -->
+              <td>Unit</td>
               <td>Price</td>
-              <td>/</td><td>Unit</td>
               <td>Quantity</td>
               <td></td>
             </tr>
@@ -72,9 +72,9 @@
                 document.write('<td>' + productDetails[product]["name"].bold() + "<br>" + productDetails[product]["description"] + '</td>');
                 // description formating
                 // document.write('\n<td>' +  + '</td>');
-                document.write('<td>' + "&pound;" + productDetails[product]["price"] + '</td>');
-                document.write('<td>' + 'for' + '</td>');
                 document.write('<td>' + productDetails[product]["units"] + '</td>\n');
+                document.write('<td>' + "&pound;" + productDetails[product]["price"] + '</td>');
+                // document.write('<td>' + 'for' + '</td>');
                 // input value
                 // document.write('<td><input name="' + product + '" id="' + product + '" type="text" value="" style="width: 30px;" /></td>\n');
                 document.write('<td><select name="'+ product +'" class="form-control" style="min-width:70px" id="' + product + '" value=""><option value=1>1</option><option value=2>2</option> <option value=3>3</option> <option value=4>4</option> <option value=5>5</option> <option value=6>6</option> <option value=7>7</option> <option value=8>8</option> <option value=9>9</option><option value=10>10</option></select></td>')
@@ -94,7 +94,7 @@
             <thead>
               <tr>
                 <th>Item</th>
-                <th>unit</th>
+                <th style="text-align: center">Quantity</th>
               </tr>
             </thead>
             <tbody id="basketList"></tbody>
@@ -107,7 +107,7 @@
               var productDetails = getProductDetails();
               for (var product in productDetails) {
                 if (basket[product] > 0) {
-                  $("#basketList").append('<tr><td>' + productDetails[product]["name"] + '</td><td>' + basket[product] + '</td><td><button onclick="javascript:removeProductFromBasket(\'' + product + '\'); updateBasket()" class="btn btn-danger btn-sm">Remove</button></td></tr>');
+                  $("#basketList").append('<tr><td>' + productDetails[product]["name"] + '</td><td style="text-align: center">' + basket[product] + '</td><td><button onclick="javascript:removeProductFromBasket(\'' + product + '\'); updateBasket()" class="btn btn-danger btn-sm">Remove</button></td></tr>');
                 }
               }
             }
