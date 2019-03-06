@@ -37,64 +37,87 @@
               </span>
           </a>
 
-        <div class="float-right" style="margin-right:2%">
+        <!-- <div class="float-right" style="margin-right:2%">
             <a href="basket.html" class="btn btn-primary btn-md bg-warning " >
                 <span class="mb-0 h4 text-white text-justify"> Go to Basket</span>
             </a>
-        </div>
+        </div> -->
      </nav>
-	<h3 style="margin: 15px;height: 30px">Your Basket</h3>
-    <table align="left;" cellpadding="7px;" id="heading" class="table" style="width:800px;">
-     <tr>
-           <td></td>
-           <td>Product</td>
-           <td>Unit</td>
-           <td>Unit price</td>
-           <td>Quantity</td>
-           <td></td>
-           <td>Price</td>
-           <td></td>
-      <tr/>
-    </table>
-  <div style = "overflow-y: scroll;height:350px;">
-    <form class="form-inline ">
-      <table cellpadding="7px;" class="table " style="width:800px;">
-        <script>
-          var basket = readBasket();
-          var productDetails = getProductDetails();
-          for (var product in productDetails) {
-            if (basket[product] > 0) {
-              document.write('       <tr id = "tab_' + product + '">\n');
-              document.write('         <td style="vertical-align:middle;"><img src="img/' + productDetails[product]["image"] + '" /></td>\n');
-              document.write('         <td style="vertical-align:middle;">' + productDetails[product]["name"] + '</td>\n');
-              document.write('         <td style="vertical-align:middle;">' + productDetails[product]["units"] + '</td>\n');
-              document.write('         <td style="vertical-align:middle;">&pound;' + productDetails[product]["price"] + '</td>\n');
-              document.write('         <td style="vertical-align:middle;"><input class="form-control" name="' + product + '" id="' + product + '" type="text" maxlength="2" value="' + basket[product] + '" style="width: 50px;" /></td>\n');
-              document.write('         <td style="vertical-align:middle;"><input name="change' + product + '" type="button" class="btn btn-primary" value="change" onclick="javascript:verifyNumeric(\'' + product + '\', document.getElementById(\'' + product + '\').value); location.href=location.href;"/></td>\n');
-              document.write('         <td style="vertical-align:middle;">&pound;' + (productDetails[product]["price"] * basket[product]).toFixed(2) + '</td>\n');
-              document.write('         <td style="vertical-align:middle;"><input name="remove' + product + '" type="button" value="remove" class="btn btn-danger" onclick="javascript:removeProductFromBasket(\'' + product + '\');location.href=location.href;"/></td>\n');
-              document.write('       </tr>\n');
-            }
-          }
-        </script>
-      </table>
-    </form>
+    <div class="container-fluid" style="margin:auto"> 
+      <div class="row">
+          <div class="col-md-9">
+              <h3>Your Basket</h3>
+              <table class="table" id="heading">
+               <thead>
+                 <tr>
+                    <td></td>
+                    <td>Product</td>
+                    <td>Unit</td>
+                    <td>Unit price</td>
+                    <td>Quantity</td>
+                    <td></td>
+                    <td>Price</td>
+                    <td></td>
+                 </tr>
+               </thead>
+                <tbody>
+                  <script>
+                    var basket = readBasket();
+                    var productDetails = getProductDetails();
+                    for (var product in productDetails) {
+                      if (basket[product] > 0) {
+                        document.write('<tr id = "tab_' + product + '">\n');
+                        document.write('<td style="vertical-align:middle;"><img src="img/' + productDetails[product]["image"] + '" width=80px height=80px/></td>\n');
+                        document.write('<td style="vertical-align:middle;">' + productDetails[product]["name"] + '</td>\n');
+                        document.write('<td style="vertical-align:middle;">' + productDetails[product]["units"] + '</td>\n');
+                        document.write('<td style="vertical-align:middle;">&pound;' + productDetails[product]["price"] + '</td>\n');
+                        document.write('<td style="vertical-align:middle;"><input class="form-control" name="' + product + '" id="' + product + '" type="text" maxlength="2" value="' + basket[product] + '" style="width: 50px;" /></td>\n');
+                        document.write('<td style="vertical-align:middle;"><input name="change' + product + '" type="button" class="btn btn-primary" value="change" onclick="javascript:verifyNumeric(\'' + product + '\', document.getElementById(\'' + product + '\').value); location.href=location.href;"/></td>\n');
+                        document.write('<td style="vertical-align:middle;">&pound;' + (productDetails[product]["price"] * basket[product]).toFixed(2) + '</td>\n');
+                        document.write('<td style="vertical-align:middle;"><input name="remove' + product + '" type="button" value="remove" class="btn btn-danger" onclick="javascript:removeProductFromBasket(\'' + product + '\');location.href=location.href;"/></td>\n');
+                        document.write('</tr>\n');
+                        }
+                      }
+                    </script>
+                </tbody>
+              </table>
+           </div>
+      
+          <div class="col-md-3" id="totals">
+            <div style="position: -webkit-sticky; position: sticky; top: 90px;">
+              <h3 style="text-align: center">Your order</h3>
+                <table class="table table-borderless table-sm" >
+                  <tbody>
+                      <script>
+                        var totals = calculateTotals();
+                        // $("#order").append('<tr><td>Total ex VAT: ' + '&pound' + parseFloat(totals["totalnovat"]).toFixed(2) +'</td></tr><tr><td>includes VAT: ' + '&pound' + parseFloat(totals["totalnovat"]).toFixed(2) + '</td></tr></r><td>Total inc. VAT: ' + '&pound' + parseFloat(totals["total"]).toFixed(2) + '</td></tr>')
+                        document.write('<tr><td style="text-align: left">Total ex VAT: ' + '&pound' + parseFloat(totals["totalnovat"]).toFixed(2) +'</td></tr>\n');
+                        document.write('<tr><td style="text-align: left">includes VAT: ' + '&pound' + parseFloat(totals["totalnovat"]).toFixed(2) + '</td></tr>\n');
+                        document.write('<tr><td style="text-align: left">Total inc. VAT: ' + '&pound' + parseFloat(totals["total"]).toFixed(2) + '</td></tr>\n');
+                      </script>
+                      <tr>
+                        <td>
+                            <input type="button" name="Go to Checkout" value="Go to Checkout" class="btn btn-primary btn-block" onclick="javascript:orderFunction();"/>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                            <input type="button" name="continue" value="Continue Shopping" class="btn btn-secondary btn-block" onclick="window.location.href='shop.html'" />
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                            <input type="button" id="clearbasket" name="clearbasket" value="Clear Basket" class="btn btn-danger btn-block" />
+                        </td>
+                      </tr>
+                  </tbody>
+                </table>
+            </div>
+
+          </div>
+      </div>
     </div>
 
-    <div style="position: fixed; bottom: 0; left: 0; right: 0; height: 150px; background-color:white; width:800px;" id="totals">
-      <script>
-        var totals = calculateTotals();
-        document.write('<p>Total ex VAT: ' + '&pound' + parseFloat(totals["totalnovat"]).toFixed(2) +'</p>\n');
-        document.write('<p>includes VAT: ' + '&pound' + parseFloat(totals["totalnovat"]).toFixed(2) + '</p>\n');
-        document.write('<p>Total inc. VAT: ' + '&pound' + parseFloat(totals["total"]).toFixed(2) + '</p>\n');
-      </script>
-
-      <form>
-        <input type="button" name="continue" value="Continue Shopping" class="btn btn-secondary" onclick="window.location.href='shop.html'" />
-        <input type="button" id="clearbasket" name="clearbasket" value="Clear Basket" class="btn btn-light" />
-        <input type="button" name="order" value="Order" class="btn btn-primary" onclick="javascript:orderFunction();" />
-      </form>
-    </div>
 	<script>
 		$("#clearbasket").click(function() {
 			if (confirm('Are you sure you want to clear your basket?')) {
@@ -107,7 +130,4 @@
 
 	  </script>
   </body>
-
-
-
 </html>

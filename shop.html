@@ -17,9 +17,6 @@
 			padding-right: 15px;
 		}
 	</style>
-
-
-
   </head>
   <body>
     <nav class="navbar navbar-toggleable-md navbar-expand-md navbar-light bg-primary sticky-top">
@@ -28,12 +25,6 @@
                 eVeg Shop
                 </span>
             </a>
-
-          <div class="float-right" style="margin-right:2%">
-              <a href="basket.html" class="btn btn-primary btn-md bg-warning " >
-                  <span class="mb-0 h4 text-white text-justify"> Go to Basket</span>
-              </a>
-          </div>
        </nav>
 
   <div class="container-fluid" style="margin:auto">
@@ -59,7 +50,6 @@
               <td></td>
             </tr>
           </thead>
-
           <script>
             // var fruit = getFruits();
             var productDetails = getProductDetails();
@@ -90,7 +80,7 @@
       <div class="col-md-3">
         <div style="position: -webkit-sticky; position: sticky; top: 90px;">
         <h5 style="text-align: center">Basket Summary</h5>
-          <table class="table table-borderless">
+          <table class="table table-sm table-borderless">
             <thead>
               <tr>
                 <th>Item</th>
@@ -110,6 +100,7 @@
                   $("#basketList").append('<tr><td>' + productDetails[product]["name"] + '</td><td style="text-align: center">' + basket[product] + '</td><td><button onclick="javascript:removeProductFromBasket(\'' + product + '\'); updateBasket()" class="btn btn-danger btn-sm">Remove</button></td></tr>');
                 }
               }
+              $("#basketList").append('<tr><td colspan="3"><a href="basket.html" class="btn btn-primary btn-block" ><span class="mb-0 h4 text-white text-justify"> Go to Basket</span></a> </td></tr>')
             }
           </script>
           </div>
